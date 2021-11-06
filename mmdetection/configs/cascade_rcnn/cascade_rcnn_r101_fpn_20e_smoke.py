@@ -8,7 +8,7 @@ model = dict(
     pretrained=None,
     backbone=dict(
         depth=101,
-        init_cfg= None))
+        init_cfg=None))
 
 lr_config = dict(step=[16, 19])
 runner = dict(type='EpochBasedRunner', max_epochs=20)
