@@ -27,7 +27,8 @@ def parse_args():
         '--resume-from', help='the checkpoint file to resume from')
     parser.add_argument(
         '--no-validate',
-        action='store_true',
+        default=True,
+#         action='store_true',
         help='whether not to evaluate the checkpoint during training')
     group_gpus = parser.add_mutually_exclusive_group()
     group_gpus.add_argument(
@@ -91,7 +92,8 @@ def main():
     with open(train_txt_path,"w") as fn:   
         for i in range(len(img_info)//2):
             fn.write(img_info[2*i].split(".")[0]+"\n")
-            
+         
+        
     args = parse_args()
     cfg = Config.fromfile(args.config)
     if args.cfg_options is not None:
