@@ -32,15 +32,9 @@ data = dict(
     samples_per_gpu=2,
     workers_per_gpu=2,
     train=dict(
-        type='RepeatDataset',
-        times=10,
-        dataset=dict(
-            type=dataset_type,
-            ann_file=[
-                'train.txt'
-            ],
-            pipeline=train_pipeline)),
-   
+        type=dataset_type,
+        ann_file='train.txt',
+        pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         ann_file= 'train.txt',
