@@ -92,7 +92,6 @@ def main():
     with open(train_txt_path,"w") as fn:   
         for i in range(len(img_info)//2):
             fn.write(img_info[2*i].split(".")[0]+"\n")
-         
         
     args = parse_args()
     cfg = Config.fromfile(args.config)
