@@ -10,8 +10,8 @@ model = dict(
         depth=101,
         init_cfg=None))
 
-lr_config = dict(step=[16, 19])
-runner = dict(type='EpochBasedRunner', max_epochs=20)
+lr_config = dict(step=[8, 11])
+runner = dict(type='EpochBasedRunner', max_epochs=12)
 optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001)
 data = dict(
     samples_per_gpu=8,
