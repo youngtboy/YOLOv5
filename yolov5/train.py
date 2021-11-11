@@ -26,6 +26,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.optim import SGD, Adam, lr_scheduler
 from tqdm import tqdm
 
+
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
 if str(ROOT) not in sys.path:
@@ -628,6 +629,7 @@ def run(**kwargs):
 
 if __name__ == "__main__":
     import shutil
+    from pascal2yolo import convert_info
     root ="/home/data/323/"
     data_root = os.path.join(root,"SmokeDataset")
     images_path = os.path.join(data_root,"images")
