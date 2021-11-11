@@ -625,12 +625,17 @@ if __name__ == "__main__":
     import shutil
     root ="/home/data/323/"
     os.mkdir(os.path.join(path,"SmokeDataset"))
+    os.mkdir(os.path.join(path,"SmokeDataset","images"))
+    os.mkdir(os.path.join(path,"SmokeDataset","annotation"))
+    os.mkdir(os.path.join(path,"SmokeDataset","labels"))
+    
     img_info = os.listdir(path)
     for i in img_info:
         suffix = i.split(".")[1]
         if suffix == "jpg":
             shutil.move(os.path.join(path,i), os.path.join(path,"SmokeDataset"))
-         elif suffix ==
+         elif suffix == "xml":
+            shutil.move()
     if os.path.exists("/home/data/323/images.txt"):
         os.remove("/home/data/323/images.txt")
     img_info = os.listdir("/home/data/323")
