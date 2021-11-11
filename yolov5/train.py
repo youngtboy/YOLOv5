@@ -623,7 +623,8 @@ def run(**kwargs):
 
 if __name__ == "__main__":
     opt = parse_opt()
-    if os.exists("/home/data/323/im")
+    if os.exists("/home/data/323/images.txt"):
+        os.remove("/home/data/323/images.txt")     
     img_info = os.listdir("/home/data/323")
     img_info.sort()
     train_txt_path = "/home/data/323/images.txt"
