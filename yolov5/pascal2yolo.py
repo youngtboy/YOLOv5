@@ -1,7 +1,7 @@
 import os
 from lxml import etree
 
-voc_images_path = "../SmokeDataset/VOC2007/JPEGImages"
+voc_images_path = "/home/data/323/images"
 voc_xml_path = "../SmokeDataset/VOC2007/Annotations"
 class_dict = {"smoke": 0}
 
@@ -31,19 +31,16 @@ def parse_xml_to_dict(xml):
     return {xml.tag: result}
 
 
-def convert_info(file_names, save_root):
-
+def convert_info(xml_path, save_root):
     save_txt_path = os.path.join(save_root, "labels")
-    f = open(file_names, "r")
-    for line in f:
-        name = line.rstrip()
-
-        # 检查下图像文件是否存在
-        img_path = os.path.join(voc_images_path, name + ".jpg")
+    info = os.listdir(xml_path)
+    for name in info:
+        
+        img_path = os.path.join(voc_images_path, name.split(".")[0] + ".jpg")
         assert os.path.exists(img_path), "file:{} not exist...".format(img_path)
 
         # 检查xml文件是否存在
-        xml_path = os.path.join(voc_xml_path, name + ".xml")
+        xml_path = os.path.join(voc_xml_path, name)
         assert os.path.exists(xml_path), "file:{} not exist...".format(xml_path)
 
         # read xml
@@ -94,3 +91,6 @@ def convert_info(file_names, save_root):
                     f.write(" ".join(info))
                 else:
                     f.write("\n" + " ".join(info))
+
+if __name__ == '__main__':
+    convert_info("../SmokeDataset/VOC2007/ImageSets/Main/train.txt", "../SmokeDataset/")
