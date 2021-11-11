@@ -85,7 +85,8 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
 
     # Loggers
     if RANK in [-1, 0]:
-        loggers = Loggers(save_dir, weights, opt, hyp, LOGGER)  # loggers instance
+        log_dir=""
+        loggers = Loggers(log_dir, weights, opt, hyp, LOGGER)  # loggers instance
         if loggers.wandb:
             data_dict = loggers.wandb.data_dict
             if resume:
@@ -623,31 +624,30 @@ def run(**kwargs):
 
 if __name__ == "__main__":
     import shutil
-    from pascal2yolo import convert_info
     root ="/home/data/323/"
     data_root = os.path.join(root,"SmokeDataset")
-    images_path = os.path.join(data_root,"images")
-    ann_path = os.path.join(data_root,"annotations")
+    images_path = os.path.join(dats_root,"images")
+    ann_path = os.path.join(data_root,"images")
     labels_path = os.path.join(data_root,"labels")
    
-    if not os.path.exists(data_root):
+    if os.path.exists(data_root):
         os.mkdir(data_root)
-    if not os.path.exists(images_path):
+    if os.path.exists(images_path):
         os.mkdir(images_path)
-    if not os.path.exists(ann_path):
+    if os.path.exists(ann_path):
         os.mkdir(ann_path)
-    if not os.path.exists(labels_path):
+    if os.path.exists(labels_path):
         os.mkdir(labels_path)
     
-    img_info = os.listdir(root)
+    img_info = os.listdir(path)
     for i in img_info:
-        if os.path.isdir(os.path.join(root,i)):
-            continue
         suffix = i.split(".")[1]
         if suffix == "jpg":
-            shutil.move(os.path.join(root,i), images_path)
+            shutil.move(os.path.join(path,i), images_path)
         elif suffix == "xml":
-            shutil.move(os.path.join(root,i), ann_path)            
-    convert_info(ann_path, labels_path)
+            shutil.move(os.path.join(path,i), ann_path)            
+    img_info = os.listdir(images_path)
+
+    convert_info()
     opt = parse_opt()
     main(opt)
