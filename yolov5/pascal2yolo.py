@@ -92,5 +92,3 @@ def convert_info(xml_path, save_root):
                 else:
                     f.write("\n" + " ".join(info))
 
-if __name__ == '__main__':
-    convert_info("../SmokeDataset/VOC2007/ImageSets/Main/train.txt", "../SmokeDataset/")
