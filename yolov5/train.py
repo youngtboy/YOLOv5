@@ -622,6 +622,9 @@ def run(**kwargs):
 
 
 if __name__ == "__main__":
+    root ="/home/data/323/"
+    os.mkdir(os.path.join(path,"SmokeDataset"))
+    
     if os.path.exists("/home/data/323/images.txt"):
         os.remove("/home/data/323/images.txt")
     img_info = os.listdir("/home/data/323")
