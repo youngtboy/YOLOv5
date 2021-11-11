@@ -1,8 +1,8 @@
 import os
 from lxml import etree
 
-voc_images_path = "/home/data/323/images"
-voc_xml_path = "/home/data/323/annotations"
+images_path = "/home/data/323/SmokeDataset/images"
+
 class_dict = {"smoke": 0}
 
 
@@ -36,11 +36,11 @@ def convert_info(xml_path, save_root):
     info = os.listdir(xml_path)
     for name in info:
         
-        img_path = os.path.join(voc_images_path, name.split(".")[0] + ".jpg")
+        img_path = os.path.join(images_path, name.split(".")[0] + ".jpg")
         assert os.path.exists(img_path), "file:{} not exist...".format(img_path)
 
         # 检查xml文件是否存在
-        xml_path = os.path.join(voc_xml_path, name)
+        xml_path = os.path.join(xml_path, name)
         assert os.path.exists(xml_path), "file:{} not exist...".format(xml_path)
 
         # read xml
