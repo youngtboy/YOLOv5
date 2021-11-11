@@ -642,16 +642,11 @@ if __name__ == "__main__":
     for i in img_info:
         suffix = i.split(".")[1]
         if suffix == "jpg":
-            shutil.move(os.path.join(path,i), os.path.join(path,"SmokeDataset"))
+            shutil.move(os.path.join(path,i), images_path)
         elif suffix == "xml":
-            shutil.move()
-    if os.path.exists("/home/data/323/images.txt"):
-        os.remove("/home/data/323/images.txt")
-    img_info = os.listdir("/home/data/323")
-    img_info.sort()
-    train_txt_path = "/home/data/323/images.txt"
-    with open(train_txt_path,"w") as fn:   
-        for i in range(len(img_info)//2):
-            fn.write(os.path.join("/home/data/123/",img_info[i]+"\n"))
+            shutil.move(os.path.join(path,i), ann_path)            
+    img_info = os.listdir(images_path)
+
+    
     opt = parse_opt()
     main(opt)
