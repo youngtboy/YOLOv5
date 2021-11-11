@@ -631,7 +631,7 @@ if __name__ == "__main__":
     root ="/home/data/323/"
     data_root = os.path.join(root,"SmokeDataset")
     images_path = os.path.join(data_root,"images")
-    ann_path = os.path.join(data_root,"images")
+    ann_path = os.path.join(data_root,"annotations")
     labels_path = os.path.join(data_root,"labels")
    
     if os.path.exists(data_root):
