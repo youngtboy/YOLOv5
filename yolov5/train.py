@@ -622,7 +622,7 @@ def run(**kwargs):
 
 
 if __name__ == "__main__":
-    if os.exits("/home/data/323/images.txt):
+    if os.path.exists("/home/data/323/images.txt"):
         os.remove("/home/data/323/images.txt")
     img_info = os.listdir("/home/data/323")
     img_info.sort()
