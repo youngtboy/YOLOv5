@@ -641,6 +641,8 @@ if __name__ == "__main__":
     
     img_info = os.listdir(root)
     for i in img_info:
+        if os.path.isdir(os.path.join(root,i)):
+            continue
         suffix = i.split(".")[1]
         if suffix == "jpg":
             shutil.move(os.path.join(root,i), images_path)
