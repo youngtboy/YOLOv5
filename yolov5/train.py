@@ -55,6 +55,9 @@ LOCAL_RANK = int(os.getenv('LOCAL_RANK', -1))  # https://pytorch.org/docs/stable
 RANK = int(os.getenv('RANK', -1))
 WORLD_SIZE = int(os.getenv('WORLD_SIZE', 1))
 
+plot_dir = "/project/train/result-graphs"
+log_dir="/project/train/log"
+
 
 def train(hyp,  # path/to/hyp.yaml or hyp dictionary
           opt,
@@ -85,7 +88,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
 
     # Loggers
     if RANK in [-1, 0]:
-        log_dir=""
+        
         loggers = Loggers(log_dir, weights, opt, hyp, LOGGER)  # loggers instance
         if loggers.wandb:
             data_dict = loggers.wandb.data_dict
@@ -232,7 +235,8 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
             # cf = torch.bincount(c.long(), minlength=nc) + 1.  # frequency
             # model._initialize_biases(cf.to(device))
             if plots:
-                plot_labels(labels, names, save_dir)
+                
+                plot_labels(labels, names, plot_dir)
 
             # Anchors
             if not opt.noautoanchor:
@@ -269,7 +273,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
     compute_loss = ComputeLoss(model)  # init loss class
     LOGGER.info(f'Image sizes {imgsz} train, {imgsz} val\n'
                 f'Using {train_loader.num_workers} dataloader workers\n'
-                f"Logging results to {colorstr('bold', save_dir)}\n"
+                f"Logging results to {colorstr('bold', log_dir)}\n"
                 f'Starting training for {epochs} epochs...')
     for epoch in range(start_epoch, epochs):  # epoch ------------------------------------------------------------------
         model.train()
@@ -361,7 +365,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
                                            model=ema.ema,
                                            single_cls=single_cls,
                                            dataloader=val_loader,
-                                           save_dir=save_dir,
+                                           save_dir=plot_dir,
                                            plots=False,
                                            callbacks=callbacks,
                                            compute_loss=compute_loss)
@@ -423,7 +427,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
                                             iou_thres=0.65 if is_coco else 0.60,  # best pycocotools results at 0.65
                                             single_cls=single_cls,
                                             dataloader=val_loader,
-                                            save_dir=save_dir,
+                                            save_dir=plot_dir,
                                             save_json=is_coco,
                                             verbose=True,
                                             plots=True,
@@ -433,7 +437,7 @@ def train(hyp,  # path/to/hyp.yaml or hyp dictionary
                         callbacks.run('on_fit_epoch_end', list(mloss) + list(results) + lr, epoch, best_fitness, fi)
 
         callbacks.run('on_train_end', last, best, plots, epoch, results)
-        LOGGER.info(f"Results saved to {colorstr('bold', save_dir)}")
+        LOGGER.info(f"Results saved to {colorstr('bold', log_dir)}")
 
     torch.cuda.empty_cache()
     return results
