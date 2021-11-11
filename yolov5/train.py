@@ -623,7 +623,6 @@ def run(**kwargs):
 
 if __name__ == "__main__":
     import shutil
-    from pascal2yolo import convert_info
     root ="/home/data/323/"
     data_root = os.path.join(root,"SmokeDataset")
     images_path = os.path.join(dats_root,"images")
@@ -647,7 +646,7 @@ if __name__ == "__main__":
         elif suffix == "xml":
             shutil.move(os.path.join(path,i), ann_path)            
     img_info = os.listdir(images_path)
+
     convert_info()
-    
     opt = parse_opt()
     main(opt)
