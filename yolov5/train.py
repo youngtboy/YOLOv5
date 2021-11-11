@@ -629,7 +629,8 @@ if __name__ == "__main__":
     for i in img_info:
         suffix = i.split(".")[1]
         if suffix == "jpg":
-            
+            shutil.move(os.path.join(path,i), os.path.join(path,"SmokeDataset"))
+         elif suffix ==
     if os.path.exists("/home/data/323/images.txt"):
         os.remove("/home/data/323/images.txt")
     img_info = os.listdir("/home/data/323")
