@@ -52,7 +52,8 @@ def convert_info(xml_path_root, save_path):
         img_width = int(data["size"]["width"])
 
         # write object info into txt
-        assert "object" in data.keys(), "file: '{}' lack of object key.".format(xml_path)
+        if "object" not in data.keys():
+            continue
         if len(data["object"]) == 0:
             # 如果xml文件中没有目标就直接忽略该样本
             print("Warning: in '{}' xml, there are no objects.".format(xml_path))
