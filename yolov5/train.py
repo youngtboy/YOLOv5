@@ -646,7 +646,6 @@ if __name__ == "__main__":
             shutil.move(os.path.join(root,i), images_path)
         elif suffix == "xml":
             shutil.move(os.path.join(root,i), ann_path)            
-    convert_info()
-    
-    opt = parse_opt(ann_path, labels_path)
+    convert_info(ann_path, labels_path)
+    opt = parse_opt()
     main(opt)
