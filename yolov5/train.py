@@ -624,7 +624,8 @@ def run(**kwargs):
 if __name__ == "__main__":
     import shutil
     root ="/home/data/323/"
-    data_root = os.path.join()
+    data_root = os.path.join(root,"SmokeDataset")
+    images = os.
     
     os.mkdir(os.path.join(path,"SmokeDataset"))
     os.mkdir(os.path.join(path,"SmokeDataset","images"))
