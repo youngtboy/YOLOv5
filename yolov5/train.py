@@ -625,9 +625,16 @@ if __name__ == "__main__":
     import shutil
     root ="/home/data/323/"
     data_root = os.path.join(root,"SmokeDataset")
-    images = os.
+    images_path = os.path.join(dats_root,"images")
+    ann_path = os.path.join(data_root,"images")
+    labels_path = os.path.join(data_root,"labels")
     
-    os.mkdir(os.path.join(path,"SmokeDataset"))
+    if os.path.exists(data_root):
+        os.mkdir(data_root))
+    if os.path.exists(image_root):
+        os.mkdir(data_root))
+    if os.path.exists(data_root):
+        os.mkdir(data_root))
     os.mkdir(os.path.join(path,"SmokeDataset","images"))
     os.mkdir(os.path.join(path,"SmokeDataset","annotation"))
     os.mkdir(os.path.join(path,"SmokeDataset","labels"))
