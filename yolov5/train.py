@@ -628,16 +628,15 @@ if __name__ == "__main__":
     images_path = os.path.join(dats_root,"images")
     ann_path = os.path.join(data_root,"images")
     labels_path = os.path.join(data_root,"labels")
-    
+   
     if os.path.exists(data_root):
-        os.mkdir(data_root))
-    if os.path.exists(image_root):
-        os.mkdir(data_root))
-    if os.path.exists(data_root):
-        os.mkdir(data_root))
-    os.mkdir(os.path.join(path,"SmokeDataset","images"))
-    os.mkdir(os.path.join(path,"SmokeDataset","annotation"))
-    os.mkdir(os.path.join(path,"SmokeDataset","labels"))
+        os.mkdir(data_root)
+    if os.path.exists(images_path):
+        os.mkdir(images_path)
+    if os.path.exists(ann_path):
+        os.mkdir(ann_path)
+    if os.path.exists(labels_path):
+        os.mkdir(labels_path)
     
     img_info = os.listdir(path)
     for i in img_info:
