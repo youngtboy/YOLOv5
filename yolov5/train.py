@@ -634,7 +634,7 @@ if __name__ == "__main__":
         suffix = i.split(".")[1]
         if suffix == "jpg":
             shutil.move(os.path.join(path,i), os.path.join(path,"SmokeDataset"))
-         elif suffix == "xml":
+        elif suffix == "xml":
             shutil.move()
     if os.path.exists("/home/data/323/images.txt"):
         os.remove("/home/data/323/images.txt")
