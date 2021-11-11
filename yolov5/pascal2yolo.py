@@ -2,7 +2,7 @@ import os
 from lxml import etree
 
 voc_images_path = "/home/data/323/images"
-voc_xml_path = "../SmokeDataset/VOC2007/Annotations"
+voc_xml_path = "/home/data/323/annotations"
 class_dict = {"smoke": 0}
 
 
