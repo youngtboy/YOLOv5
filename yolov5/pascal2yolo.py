@@ -58,7 +58,7 @@ def convert_info(xml_path, save_path):
             print("Warning: in '{}' xml, there are no objects.".format(xml_path))
             continue
 
-        with open(os.path.join(save_txt_path, name + ".txt"), "w") as f:
+        with open(os.path.join(save_txt_path, name.split(".")[0] + ".txt"), "w") as f:
             for index, obj in enumerate(data["object"]):
                 # 获取每个object的box信息
                 xmin = float(obj["bndbox"]["xmin"])

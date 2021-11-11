@@ -648,5 +648,5 @@ if __name__ == "__main__":
             shutil.move(os.path.join(root,i), ann_path)            
     convert_info()
     
-    opt = parse_opt()
+    opt = parse_opt(ann_path, labels_path)
     main(opt)
