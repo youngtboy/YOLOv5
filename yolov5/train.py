@@ -645,13 +645,13 @@ if __name__ == "__main__":
     
     img_info = os.listdir(root)
     for i in img_info:
+        if os.path.isdir(os.path.join(root,i)):
+            continue
         suffix = i.split(".")[1]
         if suffix == "jpg":
             shutil.move(os.path.join(path,i), images_path)
         elif suffix == "xml":
             shutil.move(os.path.join(path,i), ann_path)            
-    img_info = os.listdir(images_path)
-
     convert_info(ann_path,labels_path)
     opt = parse_opt()
     main(opt)
