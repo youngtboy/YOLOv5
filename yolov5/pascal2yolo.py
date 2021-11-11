@@ -31,8 +31,8 @@ def parse_xml_to_dict(xml):
     return {xml.tag: result}
 
 
-def convert_info(xml_path, save_root):
-    save_txt_path = os.path.join(save_root, "labels")
+def convert_info(xml_path, save_path):
+    save_txt_path = save_path
     info = os.listdir(xml_path)
     for name in info:
         
